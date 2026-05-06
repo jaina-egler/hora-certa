@@ -1,11 +1,10 @@
 """
 Rotas principais da aplicação.
-
-Nesta primeira etapa, a aplicação possui uma única página com informações
-sobre Atividades Complementares e a estrutura inicial do simulador.
 """
 
 from flask import Blueprint, render_template
+
+from app.regras import ATIVIDADES_COMPLEMENTARES
 
 main = Blueprint("main", __name__)
 
@@ -18,4 +17,7 @@ def index():
     Returns:
         str: template HTML renderizado.
     """
-    return render_template("index.html")
+    return render_template(
+        "index.html",
+        atividades=ATIVIDADES_COMPLEMENTARES
+    )
