@@ -6,23 +6,18 @@
 
 <section id="inicio" class="hero-section">
     <div class="container">
-        <div class="row align-items-center g-4">
+        <div class="row align-items-center g-5">
             <div class="col-lg-7">
-                <span class="badge text-bg-success mb-3">
-                    Projeto acadêmico
-                </span>
-
-                <h1 class="display-5 fw-bold">
+                <h1 class="fw-bold">
                     Simulador de Atividades Complementares
                 </h1>
 
                 <p class="lead text-muted mt-3">
-                    Uma ferramenta simples para ajudar estudantes a entenderem
-                    quais atividades podem contar, quanto cada uma pode valer
-                    e quais documentos são necessários.
+                    Entenda quais atividades podem contar, quanto cada uma pode valer
+                    e quais documentos são necessários para comprovar suas horas.
                 </p>
 
-                <div class="d-flex flex-wrap gap-2 mt-4">
+                <div class="d-flex flex-wrap gap-3 mt-4">
                     <a href="#tabela" class="btn btn-success btn-lg">
                         Consultar tabela
                     </a>
@@ -34,17 +29,17 @@
             </div>
 
             <div class="col-lg-5">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <h2 class="h5 fw-semibold">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h2 class="h5 fw-bold mb-3">
                             Para que serve?
                         </h2>
 
                         <p class="text-muted mb-0">
-                            O sistema ajuda o estudante a evitar erros comuns,
-                            como achar que toda a carga horária do certificado
-                            será aproveitada integralmente. Algumas atividades
-                            possuem limites e regras específicas.
+                            O sistema ajuda estudantes a evitarem erros comuns,
+                            como acreditar que toda a carga horária do certificado
+                            será aproveitada. Algumas atividades têm limites e regras
+                            específicas.
                         </p>
                     </div>
                 </div>
@@ -53,9 +48,9 @@
     </div>
 </section>
 
-<section id="sobre" class="section-padding bg-light">
+<section id="sobre" class="section-padding">
     <div class="container">
-        <div class="row g-4">
+        <div class="row g-5">
             <div class="col-lg-6">
                 <h2 class="section-title">
                     O que são Atividades Complementares?
@@ -69,8 +64,8 @@
 
                 <p>
                     Podem ser cursos, eventos, projetos, monitorias, publicações,
-                    ações sociais, produção de software, doação de sangue, entre
-                    outras atividades previstas no regulamento.
+                    ações sociais, produção de software, doação de sangue, entre outras
+                    atividades previstas no regulamento.
                 </p>
 
                 <p class="mb-0">
@@ -93,7 +88,8 @@
                 <div class="alert alert-success mb-0">
                     <strong>Atenção:</strong>
                     o resultado do sistema é apenas uma estimativa. A aprovação final
-                    sempre depende da análise da coordenação ou setor responsável do curso.
+                    sempre depende da análise da coordenação ou do setor responsável
+                    do curso.
                 </div>
             </div>
         </div>
@@ -117,9 +113,9 @@
         </div>
 
         <div class="card border-0 shadow-sm">
-            <div class="card-body p-4">
+            <div class="card-body">
                 <div class="row g-3 align-items-end mb-3">
-                    <div class="col-md-8">
+                    <div class="col-lg-9">
                         <label for="pesquisaTabela" class="form-label">
                             Pesquisar atividade
                         </label>
@@ -128,11 +124,11 @@
                             type="text"
                             id="pesquisaTabela"
                             class="form-control"
-                            placeholder="Ex: curso, software, doação, evento, TRE, voluntário..."
+                            placeholder="Ex: curso, software, doação, evento, TRE, voluntariado..."
                         >
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-lg-3">
                         <button
                             type="button"
                             id="limparPesquisa"
@@ -143,7 +139,7 @@
                     </div>
                 </div>
 
-                <div class="alert alert-light border small">
+                <div class="alert alert-light border small mb-4">
                     <strong>Dica:</strong>
                     a carga horária do certificado nem sempre será aproveitada por completo.
                     Algumas atividades têm uma regra própria e um limite máximo.
@@ -165,7 +161,7 @@
                         <tbody>
                             {% for atividade in atividades %}
                             <tr>
-                                <td class="fw-semibold">
+                                <td>
                                     {{ atividade.item }}
                                 </td>
 
@@ -202,7 +198,7 @@
     </div>
 </section>
 
-<section id="simulador" class="section-padding bg-light">
+<section id="simulador" class="section-padding">
     <div class="container">
         <div class="row mb-4">
             <div class="col-lg-8">
@@ -218,11 +214,11 @@
             </div>
         </div>
 
-        <div class="card shadow-sm border-0">
-            <div class="card-body p-4">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
                 <form id="formSimulador">
                     <div class="row g-3">
-                        <div class="col-md-4">
+                        <div class="col-md-6 col-lg-4">
                             <label for="cargaCurso" class="form-label">
                                 Carga exigida pelo curso
                             </label>
@@ -235,7 +231,7 @@
                             >
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-6 col-lg-4">
                             <label for="horasDeferidas" class="form-label">
                                 Horas já aprovadas
                             </label>
@@ -248,7 +244,7 @@
                             >
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-12 col-lg-4">
                             <label for="tipoAtividade" class="form-label">
                                 Tipo de atividade
                             </label>
@@ -266,7 +262,7 @@
                             </select>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-6 col-lg-4">
                             <label for="cargaCertificado" class="form-label">
                                 Carga do certificado
                             </label>
@@ -279,7 +275,7 @@
                             >
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-6 col-lg-4">
                             <label for="horasCategoria" class="form-label">
                                 Horas já usadas nessa categoria
                             </label>
@@ -292,7 +288,7 @@
                             >
                         </div>
 
-                        <div class="col-md-4 d-flex align-items-end">
+                        <div class="col-md-12 col-lg-4 d-flex align-items-end">
                             <button
                                 type="button"
                                 class="btn btn-success w-100"
@@ -330,10 +326,10 @@
         </div>
 
         <div class="row g-4">
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body">
-                        <h3 class="h5 fw-semibold">
+                        <h3 class="h5 fw-bold mb-3">
                             O que pode contar?
                         </h3>
 
@@ -350,10 +346,10 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body">
-                        <h3 class="h5 fw-semibold">
+                        <h3 class="h5 fw-bold mb-3">
                             O que exige cuidado?
                         </h3>
 
@@ -369,17 +365,17 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body">
-                        <h3 class="h5 fw-semibold">
+                        <h3 class="h5 fw-bold mb-3">
                             Erros comuns
                         </h3>
 
                         <ul class="lista-orientacao">
                             <li>Achar que todo curso de 40h vai contar 40h.</li>
                             <li>Ignorar o limite máximo por categoria.</li>
-                            <li>Lançar evento geral e oficinas internas como se fossem coisas diferentes.</li>
+                            <li>Lançar evento geral e oficinas internas como atividades diferentes.</li>
                             <li>Não conferir a data do certificado.</li>
                             <li>Não guardar os comprovantes.</li>
                             <li>Fazer várias atividades de uma categoria que já atingiu o limite.</li>
@@ -390,8 +386,8 @@
         </div>
 
         <div class="card border-0 shadow-sm mt-4">
-            <div class="card-body p-4">
-                <h3 class="h5 fw-semibold">
+            <div class="card-body">
+                <h3 class="h5 fw-bold mb-3">
                     Como complementar as horas?
                 </h3>
 
@@ -410,9 +406,9 @@
     </div>
 </section>
 
-<section id="contato" class="section-padding bg-light">
+<section id="contato" class="section-padding">
     <div class="container">
-        <div class="row g-4 align-items-start">
+        <div class="row g-5 align-items-start">
             <div class="col-lg-5">
                 <h2 class="section-title">
                     Dúvidas e sugestões
@@ -423,7 +419,7 @@
                     Quer avisar que a tabela mudou? Use o formulário ao lado.
                 </p>
 
-                <p class="text-muted">
+                <p class="text-muted mb-0">
                     Nesta primeira versão, o formulário está apenas estruturado.
                     O envio será implementado em uma próxima etapa do projeto.
                 </p>
@@ -431,7 +427,7 @@
 
             <div class="col-lg-7">
                 <div class="card border-0 shadow-sm">
-                    <div class="card-body p-4">
+                    <div class="card-body">
                         <form id="formContato">
                             <div class="mb-3">
                                 <label for="nome" class="form-label">
