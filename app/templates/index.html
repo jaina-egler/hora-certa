@@ -1,0 +1,302 @@
+{% extends "base.html" %}
+
+{% block title %}HoraCerta IFRO — Simulador de Atividades Complementares{% endblock %}
+
+{% block content %}
+
+<section id="inicio" class="hero-section">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+                <span class="badge text-bg-success mb-3">Projeto acadêmico</span>
+
+                <h1 class="display-5 fw-bold">
+                    Simulador de Atividades Complementares
+                </h1>
+
+                <p class="lead text-muted mt-3">
+                    Uma ferramenta para auxiliar estudantes a compreenderem, classificarem
+                    e estimarem o aproveitamento de suas Atividades Complementares.
+                </p>
+
+                <div class="d-flex flex-wrap gap-2 mt-4">
+                    <a href="#simulador" class="btn btn-success btn-lg">
+                        Iniciar simulação
+                    </a>
+
+                    <a href="#orientacoes" class="btn btn-outline-secondary btn-lg">
+                        Ver orientações
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h2 class="h5 fw-semibold">Objetivo do sistema</h2>
+
+                        <p class="text-muted mb-0">
+                            Apoiar estudantes na interpretação das regras de Atividades
+                            Complementares, evitando dúvidas comuns sobre carga horária,
+                            limites por categoria e formas de comprovação.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="sobre" class="section-padding bg-light">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <h2 class="section-title">Sobre o projeto</h2>
+
+                <p>
+                    O HoraCerta IFRO é uma aplicação web de caráter acadêmico, desenvolvida
+                    para auxiliar estudantes no entendimento das Atividades Complementares.
+                </p>
+
+                <p>
+                    A proposta não substitui a análise da coordenação do curso. O sistema
+                    tem finalidade orientativa e busca apresentar uma estimativa com base
+                    nas regras institucionais.
+                </p>
+            </div>
+
+            <div class="col-lg-6">
+                <h2 class="section-title">Base normativa</h2>
+
+                <p>
+                    O projeto utiliza como referência a Resolução nº 24/REIT-CONSUP/IFRO,
+                    de 01 de agosto de 2022, que regulamenta as Atividades Complementares
+                    dos cursos de graduação do Instituto Federal de Rondônia.
+                </p>
+
+                <div class="alert alert-success mb-0">
+                    A análise final das atividades é realizada pela coordenação ou instância
+                    responsável do curso, conforme os procedimentos institucionais.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="simulador" class="section-padding">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-lg-8">
+                <h2 class="section-title">Simulador inicial</h2>
+
+                <p class="text-muted">
+                    Informe os dados abaixo para simular o aproveitamento de uma atividade.
+                    Nesta primeira versão, o cálculo será implementado na próxima etapa.
+                </p>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <form id="formSimulador">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="cargaCurso" class="form-label">
+                                Carga horária exigida pelo curso
+                            </label>
+                            <input type="number" class="form-control" id="cargaCurso" placeholder="Ex: 100">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="horasDeferidas" class="form-label">
+                                Horas já deferidas
+                            </label>
+                            <input type="number" class="form-control" id="horasDeferidas" placeholder="Ex: 51">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="tipoAtividade" class="form-label">
+                                Tipo de atividade
+                            </label>
+                            <select class="form-select" id="tipoAtividade">
+                                <option value="">Selecione...</option>
+                                <option value="curso">Curso de formação complementar</option>
+                                <option value="evento">Participação em evento</option>
+                                <option value="software_sem_registro">Produção de software sem registro</option>
+                                <option value="software_com_registro">Produção de software com registro</option>
+                                <option value="doacao_sangue">Doação de sangue</option>
+                                <option value="voluntariado">Voluntariado</option>
+                                <option value="tre">Serviço eleitoral</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="cargaCertificado" class="form-label">
+                                Carga horária do certificado
+                            </label>
+                            <input type="number" class="form-control" id="cargaCertificado" placeholder="Ex: 40">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="horasCategoria" class="form-label">
+                                Horas já usadas nessa categoria
+                            </label>
+                            <input type="number" class="form-control" id="horasCategoria" placeholder="Ex: 47">
+                        </div>
+
+                        <div class="col-md-4 d-flex align-items-end">
+                            <button type="button" class="btn btn-success w-100" id="btnSimular">
+                                Simular aproveitamento
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="resultadoSimulacao" class="resultado-box mt-4">
+                    <p class="mb-0 text-muted">
+                        O resultado da simulação aparecerá aqui após a implementação da regra de cálculo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="orientacoes" class="section-padding bg-light">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-lg-8">
+                <h2 class="section-title">Orientações gerais</h2>
+
+                <p class="text-muted">
+                    As Atividades Complementares podem ser cumpridas por meio de diferentes
+                    experiências acadêmicas, científicas, culturais, profissionais e sociais,
+                    desde que estejam devidamente comprovadas.
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="h5 fw-semibold">O que pode ser aceito?</h3>
+
+                        <ul class="lista-orientacao">
+                            <li>Cursos com certificado.</li>
+                            <li>Eventos acadêmicos ou científicos.</li>
+                            <li>Projetos de ensino, pesquisa ou extensão.</li>
+                            <li>Produção de software ou produto técnico.</li>
+                            <li>Voluntariado e ações sociais comprovadas.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="h5 fw-semibold">O que exige cuidado?</h3>
+
+                        <ul class="lista-orientacao">
+                            <li>Certificados sem carga horária.</li>
+                            <li>Atividades realizadas antes do ingresso no curso.</li>
+                            <li>Atividades duplicadas.</li>
+                            <li>Documentos sem identificação do participante.</li>
+                            <li>Atividades sem relação com a formação.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="h5 fw-semibold">Erros comuns</h3>
+
+                        <ul class="lista-orientacao">
+                            <li>Achar que toda carga do certificado será aproveitada.</li>
+                            <li>Ignorar o limite máximo por categoria.</li>
+                            <li>Lançar oficinas já incluídas em certificado geral.</li>
+                            <li>Não conferir datas e nomes nos certificados.</li>
+                            <li>Não guardar evidências do projeto ou atividade.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm mt-4">
+            <div class="card-body p-4">
+                <h3 class="h5 fw-semibold">Como complementar as horas?</h3>
+
+                <p class="mb-0">
+                    O estudante pode complementar sua carga horária com cursos, eventos,
+                    projetos, produção técnica, voluntariado, participação em atividades
+                    acadêmicas e outras ações previstas no regulamento. A escolha deve
+                    considerar o limite de cada categoria e a documentação necessária para
+                    comprovação.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contato" class="section-padding">
+    <div class="container">
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-5">
+                <h2 class="section-title">Contato e sugestões</h2>
+
+                <p class="text-muted">
+                    Este formulário pode ser utilizado para envio de dúvidas, sugestões ou
+                    solicitações de atualização da tabela de atividades.
+                </p>
+
+                <p class="text-muted">
+                    Nesta primeira etapa, o formulário está apenas estruturado. O envio será
+                    implementado em uma próxima versão.
+                </p>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <form>
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Seu nome">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">E-mail</label>
+                                <input type="email" class="form-control" id="email" placeholder="seuemail@exemplo.com">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="tipoMensagem" class="form-label">Tipo de mensagem</label>
+                                <select class="form-select" id="tipoMensagem">
+                                    <option>Dúvida</option>
+                                    <option>Sugestão</option>
+                                    <option>Correção na tabela</option>
+                                    <option>Outro</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="mensagem" class="form-label">Mensagem</label>
+                                <textarea class="form-control" id="mensagem" rows="4" placeholder="Descreva sua dúvida ou sugestão"></textarea>
+                            </div>
+
+                            <button type="button" class="btn btn-success">
+                                Enviar mensagem
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
