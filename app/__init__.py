@@ -30,6 +30,8 @@ def create_app():
     app.config["EMAIL_USER"] = os.environ.get("EMAIL_USER", "")
     app.config["EMAIL_PASSWORD"] = os.environ.get("EMAIL_PASSWORD", "")
     app.config["EMAIL_TO"] = os.environ.get("EMAIL_TO", "")
+    app.config["EMAIL_TIMEOUT"] = int(os.environ.get("EMAIL_TIMEOUT", "10"))
+    app.config["EMAIL_ENABLED"] = os.environ.get("EMAIL_ENABLED", "true").lower() == "true"
 
     from app.routes import main
     app.register_blueprint(main)

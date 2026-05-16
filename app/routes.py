@@ -31,7 +31,8 @@ def receber_contato():
     """
     Recebe mensagens enviadas pelo formulário de contato.
 
-    A mensagem é salva em CSV e enviada por e-mail.
+    A mensagem é salva em CSV e tenta ser enviada por e-mail.
+    Se o e-mail falhar, a mensagem continua registrada.
     """
     dados = request.get_json(silent=True) or request.form
 
@@ -74,6 +75,8 @@ def receber_contato():
         mensagem=mensagem
     )
 
+    email_enviado = False
+
     try:
         enviar_email_contato(
             data_hora=data_hora,
@@ -82,6 +85,8 @@ def receber_contato():
             tipo=tipo or "Não informado",
             mensagem=mensagem
         )
+        email_enviado = True
+
     except Exception as erro:
         current_app.logger.error(
             "Erro ao enviar e-mail de contato: %s",
@@ -89,19 +94,19 @@ def receber_contato():
             exc_info=True
         )
 
+    if email_enviado:
         return jsonify({
             "ok": True,
-            "mensagem": (
-                "Mensagem salva com sucesso, mas não foi possível enviar o e-mail agora. "
-                "A sugestão ficou registrada no sistema."
-            )
+            "mensagem": "Mensagem enviada com sucesso. Obrigada pela contribuição!"
         })
 
     return jsonify({
         "ok": True,
-        "mensagem": "Mensagem enviada com sucesso. Obrigada pela contribuição!"
+        "mensagem": (
+            "Mensagem registrada com sucesso. "
+            "Não foi possível enviar o e-mail agora, mas sua sugestão ficou salva."
+        )
     })
-
 
 def salvar_contato_csv(data_hora, nome, email, tipo, mensagem):
     """
@@ -135,15 +140,20 @@ def enviar_email_contato(data_hora, nome, email, tipo, mensagem):
     """
     Envia a mensagem de contato por e-mail usando SMTP.
     """
+    if not current_app.config["EMAIL_ENABLED"]:
+        current_app.logger.info("Envio de e-mail desativado por configuração.")
+        return
+
     host = current_app.config["EMAIL_HOST"]
     port = current_app.config["EMAIL_PORT"]
     use_ssl = current_app.config["EMAIL_USE_SSL"]
     usuario = current_app.config["EMAIL_USER"]
     senha = current_app.config["EMAIL_PASSWORD"]
     destinatario = current_app.config["EMAIL_TO"]
+    timeout = current_app.config["EMAIL_TIMEOUT"]
 
     if not host or not usuario or not senha or not destinatario:
-        raise RuntimeError("Configurações de e-mail não foram preenchidas no .env.")
+        raise RuntimeError("Configurações de e-mail não foram preenchidas no ambiente.")
 
     assunto = f"[HoraCerta IFRO] Nova mensagem: {tipo}"
 
@@ -167,15 +177,14 @@ Mensagem:
     email_msg.set_content(corpo)
 
     if use_ssl:
-        with smtplib.SMTP_SSL(host, port) as servidor:
+        with smtplib.SMTP_SSL(host, port, timeout=timeout) as servidor:
             servidor.login(usuario, senha)
             servidor.send_message(email_msg)
     else:
-        with smtplib.SMTP(host, port) as servidor:
+        with smtplib.SMTP(host, port, timeout=timeout) as servidor:
             servidor.starttls()
             servidor.login(usuario, senha)
             servidor.send_message(email_msg)
-
 
 def obter_caminho_contatos():
     """
