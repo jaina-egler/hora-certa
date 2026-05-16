@@ -1,46 +1,443 @@
 {% extends "base.html" %}
 
-{% block title %}HoraCerta IFRO — Simulador de Atividades Complementares{% endblock %}
+{% block title %}HoraCerta IFRO — Atividades Complementares{% endblock %}
 
 {% block content %}
 
-<section id="inicio" class="hero-section">
+<section id="inicio" class="screen-section hero-section">
     <div class="container">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-7">
-                <h1 class="fw-bold">
-                    Simulador de Atividades Complementares
+        <div class="hero-grid">
+            <div class="hero-text">
+                <span class="eyebrow">Projeto acadêmico</span>
+
+                <h1>
+                    HoraCerta IFRO
                 </h1>
 
-                <p class="lead text-muted mt-3">
-                    Entenda quais atividades podem contar, quanto cada uma pode valer
-                    e quais documentos são necessários para comprovar suas horas.
+                <p class="hero-subtitle">
+                    Um guia simples para entender, simular e planejar suas
+                    Atividades Complementares.
                 </p>
 
-                <div class="d-flex flex-wrap gap-3 mt-4">
-                    <a href="#tabela" class="btn btn-success btn-lg">
-                        Consultar tabela
-                    </a>
+                <p class="hero-description">
+                    O projeto ajuda estudantes a responderem três perguntas:
+                    <strong>o que é</strong>, <strong>para que serve</strong>
+                    e <strong>como cumprir</strong> as horas complementares.
+                </p>
+            </div>
 
-                    <a href="#simulador" class="btn btn-outline-secondary btn-lg">
-                        Fazer simulação
-                    </a>
+            <div class="hero-card">
+                <h2>Por onde começar?</h2>
+
+                <p>
+                    Escolha uma das opções abaixo para navegar pelo site.
+                    A ideia é deixar as regras mais fáceis de entender antes
+                    de lançar qualquer certificado.
+                </p>
+            </div>
+        </div>
+
+        <div class="navigation-cards">
+            <a href="#o-que-sao" class="navigation-card">
+                <span>01</span>
+                <strong>O que são?</strong>
+                <small>Entenda o conceito e a importância.</small>
+            </a>
+
+            <a href="#tabela" class="navigation-card">
+                <span>02</span>
+                <strong>O que pode contar?</strong>
+                <small>Consulte atividades, documentos e limites.</small>
+            </a>
+
+            <a href="#duvidas" class="navigation-card">
+                <span>03</span>
+                <strong>Dúvidas comuns</strong>
+                <small>Veja respostas para erros frequentes.</small>
+            </a>
+
+            <a href="#simulador" class="navigation-card">
+                <span>04</span>
+                <strong>Como calcular?</strong>
+                <small>Simule quanto uma atividade pode valer.</small>
+            </a>
+
+            <a href="#contato" class="navigation-card">
+                <span>05</span>
+                <strong>Contato</strong>
+                <small>Envie sugestões, dúvidas ou correções.</small>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="o-que-sao" class="screen-section content-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">O que é?</span>
+
+            <h2>
+                O que são Atividades Complementares?
+            </h2>
+
+            <p>
+                Atividades Complementares são experiências feitas fora das disciplinas
+                obrigatórias do curso, mas que também contribuem para a formação do estudante.
+            </p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Para que servem?</h3>
+
+                <p>
+                    Elas ajudam o estudante a ampliar sua formação acadêmica, profissional,
+                    científica, cultural e social.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>Por que são importantes?</h3>
+
+                <p>
+                    Porque incentivam o aluno a participar de atividades além da sala de aula,
+                    como cursos, eventos, projetos, monitorias, publicações e ações sociais.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h3>São obrigatórias?</h3>
+
+                <p>
+                    Sim. Cada curso define uma carga horária mínima que o estudante precisa
+                    cumprir para concluir a graduação.
+                </p>
+            </div>
+        </div>
+
+        <div class="normative-box">
+            <strong>Base usada no projeto:</strong>
+            Resolução nº 24/REIT-CONSUP/IFRO, de 01 de agosto de 2022, que regulamenta
+            as Atividades Complementares dos cursos de graduação do IFRO.
+        </div>
+    </div>
+</section>
+
+<section id="tabela" class="screen-section content-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">O que pode contar?</span>
+
+            <h2>
+                Tabela de atividades e limites
+            </h2>
+
+            <p>
+                Pesquise uma atividade para ver qual documento precisa apresentar,
+                quanto pode valer e qual é o limite máximo. A tabela foi reescrita
+                em linguagem mais simples para facilitar a consulta.
+            </p>
+        </div>
+
+        <div class="table-card">
+            <div class="table-actions">
+                <div>
+                    <label for="pesquisaTabela" class="form-label">
+                        Pesquisar atividade
+                    </label>
+
+                    <input
+                        type="text"
+                        id="pesquisaTabela"
+                        class="form-control"
+                        placeholder="Ex: curso, software, doação, evento, TRE..."
+                    >
+                </div>
+
+                <button
+                    type="button"
+                    id="limparPesquisa"
+                    class="btn btn-outline-light"
+                >
+                    Limpar
+                </button>
+            </div>
+
+            <div class="hint-box">
+                <strong>Dica:</strong>
+                a carga horária do certificado nem sempre será aproveitada por completo.
+                Algumas atividades têm regra própria e limite máximo.
+            </div>
+
+            <div class="table-responsive tabela-container">
+                <table class="table app-table" id="tabelaAtividades">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Atividade</th>
+                            <th>Documento</th>
+                            <th>Quanto conta</th>
+                            <th>Limite</th>
+                            <th>Observação</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for atividade in atividades %}
+                        <tr>
+                            <td>{{ atividade.item }}</td>
+                            <td>{{ atividade.atividade }}</td>
+                            <td>{{ atividade.documento }}</td>
+                            <td>{{ atividade.por_atividade }}</td>
+                            <td>{{ atividade.limite }}</td>
+                            <td>{{ atividade.observacao }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <p id="mensagemTabelaVazia" class="empty-message d-none">
+                Nenhuma atividade encontrada para essa pesquisa.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="duvidas" class="screen-section content-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">Dúvidas comuns</span>
+
+            <h2>
+                Perguntas que quase todo estudante tem
+            </h2>
+
+            <p>
+                Esta parte reúne dúvidas comuns sobre lançamento, limites e aproveitamento
+                das Atividades Complementares.
+            </p>
+        </div>
+
+        <div class="accordion faq-accordion" id="accordionDuvidas">
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button
+                        class="accordion-button"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#duvida1"
+                    >
+                        Posso cumprir tudo apenas com cursos?
+                    </button>
+                </h3>
+
+                <div id="duvida1" class="accordion-collapse collapse show" data-bs-parent="#accordionDuvidas">
+                    <div class="accordion-body">
+                        Não é o ideal. Os cursos têm limite máximo de aproveitamento.
+                        Mesmo que você faça muitos cursos, pode chegar no limite dessa
+                        categoria e ainda ficar com horas faltando. Por isso, o melhor é
+                        combinar cursos com pelo menos outra categoria, como produção de
+                        software, eventos, voluntariado ou serviço eleitoral.
+                    </div>
                 </div>
             </div>
 
-            <div class="col-lg-5">
-                <div class="card border-0 shadow-sm">
-                    <div class="card-body">
-                        <h2 class="h5 fw-bold mb-3">
-                            Para que serve?
-                        </h2>
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#duvida2"
+                    >
+                        Se eu participar de um workshop de 50 horas, as 50 horas serão consideradas?
+                    </button>
+                </h3>
 
-                        <p class="text-muted mb-0">
-                            O sistema ajuda estudantes a evitarem erros comuns,
-                            como acreditar que toda a carga horária do certificado
-                            será aproveitada. Algumas atividades têm limites e regras
-                            específicas.
-                        </p>
+                <div id="duvida2" class="accordion-collapse collapse" data-bs-parent="#accordionDuvidas">
+                    <div class="accordion-body">
+                        Não necessariamente. Algumas categorias possuem carga máxima por atividade
+                        e limite total. Então pode acontecer de você lançar um certificado de 50h,
+                        mas a coordenação aproveitar menos horas, conforme a tabela do regulamento.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#duvida3"
+                    >
+                        Qualquer projeto de software pode contar como hora complementar?
+                    </button>
+                </h3>
+
+                <div id="duvida3" class="accordion-collapse collapse" data-bs-parent="#accordionDuvidas">
+                    <div class="accordion-body">
+                        Não. Para ser analisado como produção de software, o projeto precisa ter
+                        propósito claro, evidência de funcionamento e forma de comprovação.
+                        O ideal é ter repositório, link do sistema online, documentação,
+                        prints e uma explicação do problema que o projeto resolve.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#duvida4"
+                    >
+                        Posso lançar o evento geral e também os workshops do mesmo evento?
+                    </button>
+                </h3>
+
+                <div id="duvida4" class="accordion-collapse collapse" data-bs-parent="#accordionDuvidas">
+                    <div class="accordion-body">
+                        Depende. Se o certificado geral já inclui as oficinas ou workshops,
+                        lançar tudo separado pode ser considerado duplicidade. O mais seguro
+                        é perguntar à coordenação antes de lançar.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#duvida5"
+                    >
+                        Certificado sem carga horária serve?
+                    </button>
+                </h3>
+
+                <div id="duvida5" class="accordion-collapse collapse" data-bs-parent="#accordionDuvidas">
+                    <div class="accordion-body">
+                        Pode dar problema. O ideal é que o certificado tenha nome do participante,
+                        carga horária, data, instituição responsável e alguma forma de validação,
+                        como assinatura, código ou link de verificação.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#duvida6"
+                    >
+                        Atividade feita antes de eu entrar no curso conta?
+                    </button>
+                </h3>
+
+                <div id="duvida6" class="accordion-collapse collapse" data-bs-parent="#accordionDuvidas">
+                    <div class="accordion-body">
+                        Em regra, as atividades devem ser realizadas após o ingresso do estudante
+                        no curso. Casos específicos precisam ser analisados pela coordenação.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#duvida7"
+                    >
+                        Trabalho na área conta?
+                    </button>
+                </h3>
+
+                <div id="duvida7" class="accordion-collapse collapse" data-bs-parent="#accordionDuvidas">
+                    <div class="accordion-body">
+                        Não automaticamente. Trabalhar na área pode contribuir para sua formação,
+                        mas precisa se encaixar em alguma categoria aceita ou ser analisado como
+                        outra atividade pela coordenação ou colegiado do curso.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#duvida8"
+                    >
+                        Quais são maneiras simples de alcançar 100 horas?
+                    </button>
+                </h3>
+
+                <div id="duvida8" class="accordion-collapse collapse" data-bs-parent="#accordionDuvidas">
+                    <div class="accordion-body">
+                        Um exemplo prático para estudantes da área de tecnologia seria:
+                        <br><br>
+
+                        <strong>1. Cursos complementares:</strong> até 60h aproveitáveis.<br>
+                        <strong>2. Dois projetos de software sem registro:</strong> até 40h aproveitáveis.
+                        <br><br>
+
+                        Com isso, o estudante pode chegar a 100h usando apenas duas frentes:
+                        cursos e produção de software. Ainda assim, tudo precisa ser comprovado
+                        e aprovado pela coordenação do curso.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#duvidaComoLancar"
+                    >
+                        Como lançar a atividade no SUAP?
+                    </button>
+                </h3>
+
+                <div id="duvidaComoLancar" class="accordion-collapse collapse" data-bs-parent="#accordionDuvidas">
+                    <div class="accordion-body">
+                        Uma forma simples é informar o nome da atividade junto com o número da categoria
+                        da tabela. Por exemplo:
+                        <strong>“Curso de Python — Atividade Complementar número 12”</strong>.
+                        <br><br>
+                        Assim, a coordenação entende mais facilmente em qual item do regulamento a atividade
+                        se encaixa. Depois, anexe o certificado ou documento comprobatório.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#duvida9"
+                    >
+                        Como calcular minhas horas?
+                    </button>
+                </h3>
+
+                <div id="duvida9" class="accordion-collapse collapse" data-bs-parent="#accordionDuvidas">
+                    <div class="accordion-body">
+                        Use a calculadora deste site para fazer uma estimativa. Informe a carga
+                        exigida pelo seu curso, quantas horas já foram aprovadas, a categoria da
+                        atividade, a carga do certificado e, se souber, quanto já usou nessa categoria.
                     </div>
                 </div>
             </div>
@@ -48,445 +445,266 @@
     </div>
 </section>
 
-<section id="sobre" class="section-padding">
+<section id="simulador" class="screen-section content-section">
     <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-6">
-                <h2 class="section-title">
-                    O que são Atividades Complementares?
-                </h2>
+        <div class="section-header">
+            <span class="eyebrow">Como calcular?</span>
 
-                <p>
-                    Atividades Complementares são experiências feitas pelo estudante
-                    fora das disciplinas obrigatórias do curso. Elas ajudam na formação
-                    acadêmica, profissional, científica, cultural e social.
-                </p>
+            <h2>
+                Calculadora de horas
+            </h2>
 
-                <p>
-                    Podem ser cursos, eventos, projetos, monitorias, publicações,
-                    ações sociais, produção de software, doação de sangue, entre outras
-                    atividades previstas no regulamento.
-                </p>
+            <p>
+                Informe sua carga exigida, as horas já aprovadas e simule novas atividades.
+                A calculadora faz uma estimativa com base nos limites da Resolução nº
+                24/REIT-CONSUP/IFRO.
+            </p>
+        </div>
 
-                <p class="mb-0">
-                    Cada curso define uma carga horária mínima que o estudante precisa
-                    cumprir para concluir a graduação.
-                </p>
+        <div class="suap-calculator">
+            <div class="suap-summary">
+                <div>
+                    <label for="cargaCurso" class="form-label">
+                        C.H. Curricular Prevista
+                        <button
+                            type="button"
+                            class="help-button"
+                            data-bs-toggle="popover"
+                            data-bs-trigger="focus"
+                            data-bs-content="É o total de horas complementares que seu curso exige. Exemplo: 100h."
+                        >
+                            ?
+                        </button>
+                    </label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="cargaCurso"
+                        placeholder="Ex: 100"
+                        min="0"
+                        step="1"
+                    >
+                </div>
+
+                <div>
+                    <label for="horasDeferidas" class="form-label">
+                        C.H. Curricular Cumprida
+                        <button
+                            type="button"
+                            class="help-button"
+                            data-bs-toggle="popover"
+                            data-bs-trigger="focus"
+                            data-bs-content="É o total de horas que já foram aprovadas pela coordenação do curso."
+                        >
+                            ?
+                        </button>
+                    </label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="horasDeferidas"
+                        placeholder="Ex: 51"
+                        min="0"
+                        step="0.5"
+                    >
+                </div>
             </div>
 
-            <div class="col-lg-6">
-                <h2 class="section-title">
-                    Base do projeto
-                </h2>
-
-                <p>
-                    Este sistema usa como referência a Resolução nº 24/REIT-CONSUP/IFRO,
-                    de 01 de agosto de 2022, que trata das Atividades Complementares
-                    dos cursos de graduação do IFRO.
-                </p>
-
-                <div class="alert alert-success mb-0">
-                    <strong>Atenção:</strong>
-                    o resultado do sistema é apenas uma estimativa. A aprovação final
-                    sempre depende da análise da coordenação ou do setor responsável
-                    do curso.
+            <div class="suap-result-line">
+                <div>
+                    <span>Horas simuladas</span>
+                    <strong id="horasSimuladas">0h</strong>
                 </div>
+
+                <div>
+                    <span>Total estimado</span>
+                    <strong id="totalEstimado">0h</strong>
+                </div>
+
+                <div>
+                    <span>Ainda faltam</span>
+                    <strong id="horasFaltantes">0h</strong>
+                </div>
+            </div>
+
+            <div id="resultadoSimulacao" class="suap-message">
+                Preencha os campos e adicione uma atividade para começar.
+            </div>
+
+            <div class="suap-table-card">
+                <div class="suap-table-title">
+                    <h3>Atividades simuladas</h3>
+
+                    <button
+                        type="button"
+                        class="btn btn-outline-light btn-sm"
+                        id="btnLimparSimulacao"
+                    >
+                        Limpar simulação
+                    </button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table suap-table">
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th>Carga do certificado</th>
+                                <th>Já usada na categoria</th>
+                                <th>Horas estimadas</th>
+                                <th>Observação</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="listaAtividadesSimuladas">
+                            <tr class="add-row">
+                                <td>
+                                    <select class="form-select form-select-sm" id="tipoAtividade">
+                                        <option value="">Selecione...</option>
+                                        <option value="curso">Curso complementar</option>
+                                        <option value="evento_regional_nacional">Evento regional ou nacional</option>
+                                        <option value="evento_internacional">Evento internacional</option>
+                                        <option value="software_sem_registro">Software sem registro</option>
+                                        <option value="software_com_registro">Software com registro</option>
+                                        <option value="doacao_sangue">Doação de sangue</option>
+                                        <option value="voluntariado">Voluntariado</option>
+                                        <option value="tre">Serviço eleitoral</option>
+                                    </select>
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="number"
+                                        class="form-control form-control-sm"
+                                        id="cargaCertificado"
+                                        placeholder="Ex: 40"
+                                        min="0"
+                                        step="0.5"
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="number"
+                                        class="form-control form-control-sm"
+                                        id="horasCategoria"
+                                        placeholder="Ex: 47"
+                                        min="0"
+                                        step="0.5"
+                                    >
+                                </td>
+
+                                <td colspan="2" class="add-row-help">
+                                    Informe a categoria e a carga do certificado. Se souber,
+                                    informe também quantas horas já usou nessa categoria.
+                                </td>
+
+                                <td>
+                                    <button
+                                        type="button"
+                                        class="btn btn-success btn-sm w-100"
+                                        id="btnAdicionarAtividade"
+                                    >
+                                        Adicionar
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr id="linhaVaziaSimulacao">
+                                <td colspan="6" class="empty-row">
+                                    Nenhuma atividade adicionada ainda.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="warning-text">
+                Esta calculadora é apenas uma estimativa. A aprovação final depende da análise da coordenação do curso.
             </div>
         </div>
     </div>
 </section>
 
-<section id="tabela" class="section-padding">
+<section id="contato" class="screen-section content-section">
     <div class="container">
-        <div class="row mb-4">
-            <div class="col-lg-8">
-                <h2 class="section-title">
-                    Tabela de atividades
+        <div class="contact-grid">
+            <div>
+                <span class="eyebrow">Contato</span>
+
+                <h2>
+                    Sugestões, dúvidas ou correções
                 </h2>
 
-                <p class="text-muted">
-                    Pesquise uma atividade para ver se ela pode contar como Atividade
-                    Complementar, qual documento precisa apresentar, quanto pode valer
-                    e qual é o limite máximo.
+                <p>
+                    Encontrou algum erro? A tabela mudou? Tem sugestão de melhoria
+                    ou encontrou um bug? Envie uma mensagem para contribuir com o projeto.
                 </p>
             </div>
-        </div>
 
-        <div class="card border-0 shadow-sm">
-            <div class="card-body">
-                <div class="row g-3 align-items-end mb-3">
-                    <div class="col-lg-9">
-                        <label for="pesquisaTabela" class="form-label">
-                            Pesquisar atividade
+            <div class="contact-card">
+                <form id="formContato">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">
+                            Nome
                         </label>
 
                         <input
                             type="text"
-                            id="pesquisaTabela"
                             class="form-control"
-                            placeholder="Ex: curso, software, doação, evento, TRE, voluntariado..."
+                            id="nome"
+                            placeholder="Seu nome"
                         >
                     </div>
 
-                    <div class="col-lg-3">
-                        <button
-                            type="button"
-                            id="limparPesquisa"
-                            class="btn btn-outline-secondary w-100"
+                    <div class="mb-3">
+                        <label for="email" class="form-label">
+                            E-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            placeholder="seuemail@exemplo.com"
                         >
-                            Limpar pesquisa
-                        </button>
                     </div>
-                </div>
 
-                <div class="alert alert-light border small mb-4">
-                    <strong>Dica:</strong>
-                    a carga horária do certificado nem sempre será aproveitada por completo.
-                    Algumas atividades têm uma regra própria e um limite máximo.
-                </div>
+                    <div class="mb-3">
+                        <label for="tipoMensagem" class="form-label">
+                            Tipo de mensagem
+                        </label>
 
-                <div class="table-responsive tabela-container">
-                    <table class="table table-hover align-middle" id="tabelaAtividades">
-                        <thead>
-                            <tr>
-                                <th>Item</th>
-                                <th>Atividade</th>
-                                <th>Documento necessário</th>
-                                <th>Quanto conta</th>
-                                <th>Limite</th>
-                                <th>Observação</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            {% for atividade in atividades %}
-                            <tr>
-                                <td>
-                                    {{ atividade.item }}
-                                </td>
-
-                                <td>
-                                    {{ atividade.atividade }}
-                                </td>
-
-                                <td>
-                                    {{ atividade.documento }}
-                                </td>
-
-                                <td>
-                                    {{ atividade.por_atividade }}
-                                </td>
-
-                                <td>
-                                    {{ atividade.limite }}
-                                </td>
-
-                                <td class="text-muted">
-                                    {{ atividade.observacao }}
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-
-                <p id="mensagemTabelaVazia" class="text-muted mt-3 d-none">
-                    Nenhuma atividade encontrada para essa pesquisa.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="simulador" class="section-padding">
-    <div class="container">
-        <div class="row mb-4">
-            <div class="col-lg-8">
-                <h2 class="section-title">
-                    Simulador de horas
-                </h2>
-
-                <p class="text-muted">
-                    Use o simulador para estimar quantas horas uma atividade pode valer.
-                    O resultado é apenas uma orientação; a aprovação final depende da
-                    coordenação do curso.
-                </p>
-            </div>
-        </div>
-
-        <div class="card border-0 shadow-sm">
-            <div class="card-body">
-                <form id="formSimulador">
-                    <div class="row g-3">
-                        <div class="col-md-6 col-lg-4">
-                            <label for="cargaCurso" class="form-label">
-                                Carga exigida pelo curso
-                            </label>
-
-                            <input
-                                type="number"
-                                class="form-control"
-                                id="cargaCurso"
-                                placeholder="Ex: 100"
-                            >
-                        </div>
-
-                        <div class="col-md-6 col-lg-4">
-                            <label for="horasDeferidas" class="form-label">
-                                Horas já aprovadas
-                            </label>
-
-                            <input
-                                type="number"
-                                class="form-control"
-                                id="horasDeferidas"
-                                placeholder="Ex: 51"
-                            >
-                        </div>
-
-                        <div class="col-md-12 col-lg-4">
-                            <label for="tipoAtividade" class="form-label">
-                                Tipo de atividade
-                            </label>
-
-                            <select class="form-select" id="tipoAtividade">
-                                <option value="">Selecione...</option>
-                                <option value="curso">Curso complementar</option>
-                                <option value="evento_regional_nacional">Evento regional ou nacional</option>
-                                <option value="evento_internacional">Evento internacional</option>
-                                <option value="software_sem_registro">Software sem registro</option>
-                                <option value="software_com_registro">Software com registro</option>
-                                <option value="doacao_sangue">Doação de sangue</option>
-                                <option value="voluntariado">Voluntariado</option>
-                                <option value="tre">Serviço eleitoral</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-6 col-lg-4">
-                            <label for="cargaCertificado" class="form-label">
-                                Carga do certificado
-                            </label>
-
-                            <input
-                                type="number"
-                                class="form-control"
-                                id="cargaCertificado"
-                                placeholder="Ex: 40"
-                            >
-                        </div>
-
-                        <div class="col-md-6 col-lg-4">
-                            <label for="horasCategoria" class="form-label">
-                                Horas já usadas nessa categoria
-                            </label>
-
-                            <input
-                                type="number"
-                                class="form-control"
-                                id="horasCategoria"
-                                placeholder="Ex: 47"
-                            >
-                        </div>
-
-                        <div class="col-md-12 col-lg-4 d-flex align-items-end">
-                            <button
-                                type="button"
-                                class="btn btn-success w-100"
-                                id="btnSimular"
-                            >
-                                Simular aproveitamento
-                            </button>
-                        </div>
+                        <select class="form-select" id="tipoMensagem">
+                            <option>Dúvida</option>
+                            <option>Sugestão</option>
+                            <option>Correção na tabela</option>
+                            <option>Bug</option>
+                            <option>Outro</option>
+                        </select>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="mensagem" class="form-label">
+                            Mensagem
+                        </label>
+
+                        <textarea
+                            class="form-control"
+                            id="mensagem"
+                            rows="4"
+                            placeholder="Descreva sua dúvida ou sugestão"
+                        ></textarea>
+                    </div>
+
+                    <button type="button" class="btn btn-success w-100">
+                        Enviar mensagem
+                    </button>
                 </form>
-
-                <div id="resultadoSimulacao" class="resultado-box mt-4">
-                    <p class="mb-0 text-muted">
-                        Preencha os campos e clique em “Simular aproveitamento”.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="orientacoes" class="section-padding">
-    <div class="container">
-        <div class="row mb-4">
-            <div class="col-lg-8">
-                <h2 class="section-title">
-                    Orientações para estudantes
-                </h2>
-
-                <p class="text-muted">
-                    Antes de fazer uma atividade, vale conferir se ela pode contar,
-                    qual comprovante será necessário e se existe limite máximo.
-                </p>
-            </div>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-lg-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h3 class="h5 fw-bold mb-3">
-                            O que pode contar?
-                        </h3>
-
-                        <ul class="lista-orientacao">
-                            <li>Cursos com certificado.</li>
-                            <li>Eventos acadêmicos ou científicos.</li>
-                            <li>Projetos de ensino, pesquisa ou extensão.</li>
-                            <li>Produção de software, site ou sistema.</li>
-                            <li>Voluntariado e ações sociais comprovadas.</li>
-                            <li>Doação de sangue com declaração.</li>
-                            <li>Serviço eleitoral comprovado pelo TRE.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h3 class="h5 fw-bold mb-3">
-                            O que exige cuidado?
-                        </h3>
-
-                        <ul class="lista-orientacao">
-                            <li>Certificado sem carga horária.</li>
-                            <li>Atividade sem nome do participante.</li>
-                            <li>Atividade feita antes do ingresso no curso.</li>
-                            <li>Atividade sem relação com a formação.</li>
-                            <li>Documento sem assinatura, código ou forma de verificação.</li>
-                            <li>Projeto sem link, descrição ou evidência de funcionamento.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <h3 class="h5 fw-bold mb-3">
-                            Erros comuns
-                        </h3>
-
-                        <ul class="lista-orientacao">
-                            <li>Achar que todo curso de 40h vai contar 40h.</li>
-                            <li>Ignorar o limite máximo por categoria.</li>
-                            <li>Lançar evento geral e oficinas internas como atividades diferentes.</li>
-                            <li>Não conferir a data do certificado.</li>
-                            <li>Não guardar os comprovantes.</li>
-                            <li>Fazer várias atividades de uma categoria que já atingiu o limite.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card border-0 shadow-sm mt-4">
-            <div class="card-body">
-                <h3 class="h5 fw-bold mb-3">
-                    Como complementar as horas?
-                </h3>
-
-                <p>
-                    O ideal é variar os tipos de atividade. Se o estudante fizer apenas
-                    cursos, pode atingir rapidamente o limite dessa categoria e ainda
-                    ficar com horas faltando.
-                </p>
-
-                <p class="mb-0">
-                    Uma boa estratégia é combinar cursos, eventos, projetos, produção
-                    técnica, atividades sociais e outras ações aceitas pelo regulamento.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="contato" class="section-padding">
-    <div class="container">
-        <div class="row g-5 align-items-start">
-            <div class="col-lg-5">
-                <h2 class="section-title">
-                    Dúvidas e sugestões
-                </h2>
-
-                <p class="text-muted">
-                    Encontrou alguma informação errada? Tem sugestão de melhoria?
-                    Quer avisar que a tabela mudou? Use o formulário ao lado.
-                </p>
-
-                <p class="text-muted mb-0">
-                    Nesta primeira versão, o formulário está apenas estruturado.
-                    O envio será implementado em uma próxima etapa do projeto.
-                </p>
-            </div>
-
-            <div class="col-lg-7">
-                <div class="card border-0 shadow-sm">
-                    <div class="card-body">
-                        <form id="formContato">
-                            <div class="mb-3">
-                                <label for="nome" class="form-label">
-                                    Nome
-                                </label>
-
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="nome"
-                                    placeholder="Seu nome"
-                                >
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="email" class="form-label">
-                                    E-mail
-                                </label>
-
-                                <input
-                                    type="email"
-                                    class="form-control"
-                                    id="email"
-                                    placeholder="seuemail@exemplo.com"
-                                >
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="tipoMensagem" class="form-label">
-                                    Tipo de mensagem
-                                </label>
-
-                                <select class="form-select" id="tipoMensagem">
-                                    <option>Dúvida</option>
-                                    <option>Sugestão</option>
-                                    <option>Correção na tabela</option>
-                                    <option>Outro</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="mensagem" class="form-label">
-                                    Mensagem
-                                </label>
-
-                                <textarea
-                                    class="form-control"
-                                    id="mensagem"
-                                    rows="4"
-                                    placeholder="Descreva sua dúvida ou sugestão"
-                                ></textarea>
-                            </div>
-
-                            <button type="button" class="btn btn-success">
-                                Enviar mensagem
-                            </button>
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

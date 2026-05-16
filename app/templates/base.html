@@ -24,9 +24,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark app-navbar sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-semibold" href="#inicio">
+            <a class="navbar-brand" href="#inicio">
                 HoraCerta IFRO
             </a>
 
@@ -45,7 +45,7 @@
             <div class="collapse navbar-collapse" id="menuPrincipal">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="#sobre" class="nav-link">Sobre</a>
+                        <a href="#o-que-sao" class="nav-link">O que são?</a>
                     </li>
 
                     <li class="nav-item">
@@ -53,11 +53,11 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#simulador" class="nav-link">Simulador</a>
+                        <a href="#duvidas" class="nav-link">Dúvidas</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="#orientacoes" class="nav-link">Orientações</a>
+                        <a href="#simulador" class="nav-link">Calculadora</a>
                     </li>
 
                     <li class="nav-item">
@@ -72,19 +72,21 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="footer mt-5 py-4 border-top">
-        <div class="container text-center text-muted small">
-            <p class="mb-1">
-                HoraCerta IFRO — Sistema acadêmico de orientação sobre Atividades Complementares.
-            </p>
+    <footer class="app-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <strong>HoraCerta IFRO</strong>
+                    <p>
+                        Projeto acadêmico desenvolvido para orientar estudantes sobre
+                        Atividades Complementares.
+                    </p>
+                </div>
 
-            <p class="mb-1">
-                Projeto desenvolvido com finalidade educacional.
-            </p>
-
-            <p class="mb-0">
-                As simulações não substituem a análise da coordenação do curso.
-            </p>
+                <div class="footer-note">
+                    As simulações são estimativas e não substituem a análise da coordenação do curso.
+                </div>
+            </div>
         </div>
     </footer>
 
