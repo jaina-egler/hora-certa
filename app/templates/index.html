@@ -648,63 +648,76 @@
 
             <div class="contact-card">
                 <form id="formContato">
-                    <div class="mb-3">
-                        <label for="nome" class="form-label">
-                            Nome
-                        </label>
+    <div class="mb-3">
+        <label for="nome" class="form-label">
+            Nome
+        </label>
 
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="nome"
-                            placeholder="Seu nome"
-                        >
-                    </div>
+        <input
+            type="text"
+            class="form-control"
+            id="nome"
+            name="nome"
+            placeholder="Seu nome"
+            required
+        >
+    </div>
 
-                    <div class="mb-3">
-                        <label for="email" class="form-label">
-                            E-mail
-                        </label>
+    <div class="mb-3">
+        <label for="email" class="form-label">
+            E-mail
+        </label>
 
-                        <input
-                            type="email"
-                            class="form-control"
-                            id="email"
-                            placeholder="seuemail@exemplo.com"
-                        >
-                    </div>
+        <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="seuemail@exemplo.com"
+            required
+        >
+    </div>
 
-                    <div class="mb-3">
-                        <label for="tipoMensagem" class="form-label">
-                            Tipo de mensagem
-                        </label>
+    <div class="mb-3">
+        <label for="tipoMensagem" class="form-label">
+            Tipo de mensagem
+        </label>
 
-                        <select class="form-select" id="tipoMensagem">
-                            <option>Dúvida</option>
-                            <option>Sugestão</option>
-                            <option>Correção na tabela</option>
-                            <option>Bug</option>
-                            <option>Outro</option>
-                        </select>
-                    </div>
+        <select
+            class="form-select"
+            id="tipoMensagem"
+            name="tipo"
+            required
+        >
+            <option value="Dúvida">Dúvida</option>
+            <option value="Sugestão">Sugestão</option>
+            <option value="Correção na tabela">Correção na tabela</option>
+            <option value="Bug">Bug</option>
+            <option value="Outro">Outro</option>
+        </select>
+    </div>
 
-                    <div class="mb-3">
-                        <label for="mensagem" class="form-label">
-                            Mensagem
-                        </label>
+    <div class="mb-3">
+        <label for="mensagem" class="form-label">
+            Mensagem
+        </label>
 
-                        <textarea
-                            class="form-control"
-                            id="mensagem"
-                            rows="4"
-                            placeholder="Descreva sua dúvida ou sugestão"
-                        ></textarea>
-                    </div>
+        <textarea
+            class="form-control"
+            id="mensagem"
+            name="mensagem"
+            rows="4"
+            placeholder="Descreva sua dúvida ou sugestão"
+            required
+        ></textarea>
+    </div>
 
-                    <button type="button" class="btn btn-success w-100">
-                        Enviar mensagem
-                    </button>
-                </form>
+    <button type="submit" class="btn btn-success w-100" id="btnEnviarContato">
+        Enviar mensagem
+    </button>
+
+    <div id="feedbackContato" class="contact-feedback d-none"></div>
+</form>
             </div>
         </div>
     </div>

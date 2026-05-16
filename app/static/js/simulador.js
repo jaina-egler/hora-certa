@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     iniciarPopovers();
     configurarPesquisaTabela();
     configurarCalculadora();
+    configurarFormularioContato();
 });
 
 
@@ -549,4 +550,94 @@ function carregarDadosSalvos() {
         localStorage.removeItem(STORAGE_CHAVE);
         atividadesSimuladas = [];
     }
+}
+/* =========================================================
+   Formulário de contato
+========================================================= */
+
+function configurarFormularioContato() {
+    const formulario = document.getElementById("formContato");
+    const feedback = document.getElementById("feedbackContato");
+    const botao = document.getElementById("btnEnviarContato");
+
+    if (!formulario || !feedback || !botao) {
+        return;
+    }
+
+    formulario.addEventListener("submit", async function (evento) {
+        evento.preventDefault();
+
+        const dados = {
+            nome: document.getElementById("nome").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            tipo: document.getElementById("tipoMensagem").value,
+            mensagem: document.getElementById("mensagem").value.trim()
+        };
+
+        if (!dados.nome || !dados.email || !dados.mensagem) {
+            mostrarFeedbackContato(
+                "Preencha nome, e-mail e mensagem antes de enviar.",
+                "erro"
+            );
+            return;
+        }
+
+        botao.disabled = true;
+        botao.innerText = "Enviando...";
+
+        try {
+            const resposta = await fetch("/contato", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dados)
+            });
+
+            const resultado = await resposta.json();
+
+            if (!resposta.ok || !resultado.ok) {
+                mostrarFeedbackContato(
+                    resultado.mensagem || "Não foi possível enviar a mensagem.",
+                    "erro"
+                );
+                return;
+            }
+
+            mostrarFeedbackContato(resultado.mensagem, "sucesso");
+            formulario.reset();
+
+        } catch (erro) {
+            mostrarFeedbackContato(
+                "Erro ao enviar mensagem. Tente novamente mais tarde.",
+                "erro"
+            );
+        } finally {
+            botao.disabled = false;
+            botao.innerText = "Enviar mensagem";
+        }
+    });
+}
+
+
+function mostrarFeedbackContato(mensagem, tipo) {
+    const feedback = document.getElementById("feedbackContato");
+
+    if (!feedback) {
+        return;
+    }
+
+    feedback.classList.remove(
+        "d-none",
+        "contact-feedback-success",
+        "contact-feedback-error"
+    );
+
+    if (tipo === "sucesso") {
+        feedback.classList.add("contact-feedback-success");
+    } else {
+        feedback.classList.add("contact-feedback-error");
+    }
+
+    feedback.innerText = mensagem;
 }
